@@ -13,6 +13,8 @@ Fonts to Classify:
 10.	Open Sans
 
 ## How to Setup and Run the project
+Before getting started make sure you have the required packages to run from requirements.txt
+
 ### If you want to learn about whole development process?
 Please run the font_classification.ipynb file cell by cell and the text will explain the data collection and preparation techniques, model development and evaluation metrics. The .ipynb must rest in the same directory as the supplied data and font folder in this repo as it will make use of them to generate 20000 images which will be stored in data_train/ and test/ folders.
 <br><br>
@@ -34,11 +36,11 @@ The model is a pretrained resnet, with a extra fully connected layer to accomada
 Please read fontPrediction.py to get a better understanding of the model.<br>
 
 ## Evaluation Metrics
-To evaluate the performace we make use of precision score, recall score, f1 score for each class. Precision measures the proportion of correctly classified font instances among all instances classified<br>
-as that font. Recall measures the proportion of correctly classified font instances out of the total instances of that font class. The F1-score is the harmonic mean of precision and recall, providing a<br> 
+To evaluate the performace we make use of precision score, recall score, f1 score for each class. Precision measures the proportion of correctly classified font instances among all instances classified
+as that font. Recall measures the proportion of correctly classified font instances out of the total instances of that font class. The F1-score is the harmonic mean of precision and recall, providing a 
 balanced evaluation.
 
-We also make use of  Receiver Operating Characteristic (ROC) curve and the Area Under the Curve (AUC) score can be useful for evaluating the performance of a classifier for each font class against all <br>
+We also make use of  Receiver Operating Characteristic (ROC) curve and the Area Under the Curve (AUC) score can be useful for evaluating the performance of a classifier for each font class against all
 other classes. A high AUC score indicates that the classifier can effectively distinguish between the target font class and the rest.
 
 ## Result
