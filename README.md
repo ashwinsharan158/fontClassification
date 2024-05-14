@@ -26,8 +26,138 @@ Make use of the fontPrediction.py by passing the image path as an argument.
 Usage: `python fontPrediction.py image\path`
 This file need to be in the same folder as the "final_font_class_10_model.pth" (provided in the repo) which are the model weights for the resnet. It is slow as it only takes a single image at a time. This file is not to be used in any other application its purpose is to just show the workings of the model.
 
+
+
 ## How in the model structured
 The model is a pretrained resnet, with a extra fully connected layer to accomadate dropout. We load the model weights "final_font_class_10_model.pth" the input needs to be 128 X 128 tensor normalized mean=[0.485, 0.456, 0.406] and std=[0.229, 0.224, 0.225] To maximize accuracy of the model the input needs to be greyscale and needs to be fed into the model in patches of 128 X 128 at a stride of 28 pixels output is the majority prediction of all the image patches as demostrated in the <b>fontPrediction.py</b>
 
-Please read fontPrediction.py to get a better understanding of the model.
+Please read fontPrediction.py to get a better understanding of the model.<br>
+
+## Evaluation Metrics
+To evaluate the performace we make use of precision score, recall score, f1 score for each class. Precision measures the proportion of correctly classified font instances among all instances classified<br>
+as that font. Recall measures the proportion of correctly classified font instances out of the total instances of that font class. The F1-score is the harmonic mean of precision and recall, providing a<br> 
+balanced evaluation.
+
+We also make use of  Receiver Operating Characteristic (ROC) curve and the Area Under the Curve (AUC) score can be useful for evaluating the performance of a classifier for each font class against all <br>
+other classes. A high AUC score indicates that the classifier can effectively distinguish between the target font class and the rest.
+
+## Result
+The model was trained successfully on all classes doesn't show signs of overfitting presents a execellent accuracy rate of 99.20%, almost 97-99% precision and recall on all classes. Model path is saved as shown below.
+
+<b>The Test Accuracy: 98.77%</b>
+
+<table>
+  <tr>
+    <th>Class</th>
+    <th>Precision</th>
+    <th>Recall</th>
+    <th>F1 Score</th>
+  </tr>
+  <tr>
+    <td>AguafinaScript</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>AlexBrush</td>
+    <td>0.930314</td>
+    <td>0.988889</td>
+    <td>0.958707</td>
+  </tr>
+  <tr>
+    <td>Allura</td>
+    <td>0.990566</td>
+    <td>0.945946</td>
+    <td>0.967742</td>
+  </tr>
+  <tr>
+    <td>Canterbury</td>
+    <td>1</td>
+    <td>0.99635</td>
+    <td>0.998172</td>
+  </tr>
+  <tr>
+    <td>GreatVibes</td>
+    <td>0.980519</td>
+    <td>0.977346</td>
+    <td>0.97893</td>
+  </tr>
+  <tr>
+    <td>Holligate Signature</td>
+    <td>0.996997</td>
+    <td>1</td>
+    <td>0.998496</td>
+  </tr>
+  <tr>
+    <td>I Love Glitter</td>
+    <td>0.996564</td>
+    <td>0.986395</td>
+    <td>0.991453</td>
+  </tr>
+  <tr>
+    <td>James Fajardo</td>
+    <td>0.986207</td>
+    <td>0.996516</td>
+    <td>0.991334</td>
+  </tr>
+  <tr>
+    <td>OpenSans</td>
+    <td>1</td>
+    <td>0.996599</td>
+    <td>0.998296</td>
+  </tr>
+  <tr>
+    <td>alsscrp</td>
+    <td>0.993151</td>
+    <td>0.993151</td>
+    <td>0.993151</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th>Class</th>
+    <th>AUC Score</th>
+  </tr>
+  <tr>
+    <td>Class AguafinaScript</td>
+    <td>0.999973</td>
+  </tr>
+  <tr>
+    <td>Class AlexBrush</td>
+    <td>0.999531</td>
+  </tr>
+  <tr>
+    <td>Class Allura</td>
+    <td>0.998013</td>
+  </tr>
+  <tr>
+    <td>Class Canterbury</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Class GreatVibes</td>
+    <td>0.997739</td>
+  </tr>
+  <tr>
+    <td>Class Holligate Signature</td>
+    <td>0.999955</td>
+  </tr>
+  <tr>
+    <td>Class I Love Glitter</td>
+    <td>0.999814</td>
+  </tr>
+  <tr>
+    <td>Class James Fajardo</td>
+    <td>0.999884</td>
+  </tr>
+  <tr>
+    <td>Class OpenSans</td>
+    <td>0.999951</td>
+  </tr>
+  <tr>
+    <td>Class alsscrp</td>
+    <td>0.99998</td>
+  </tr>
+</table>
 
