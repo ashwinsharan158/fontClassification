@@ -43,19 +43,19 @@ We also make use of  Receiver Operating Characteristic (ROC) curve and the Area 
 other classes. A high AUC score indicates that the classifier can effectively distinguish between the target font class and the rest.
 
 ## Training and Validation
-or the application of studying patterns in image data for classification of font Convolutional Neural Networks come to mind. From the study of Tensmeyer et al 2017 [1] and Mohammadian et al 2023 [2] in font<br>
-classification Res-Net architecture seems like the most viable options. ResNet allows for the training of very deep neural networks, even exceeding 100 layers. Deeper networks have the potential to capture more<br>
-complex patterns and hierarchical features in images, leading to better performance in image classification tasks. The Residual connections, which are introduced in ResNet, help to mitigate the vanishing gradient<br>
-problem. By allowing the gradient to bypass some layers, the network can propagate information more effectively during training, enabling the training of deeper networks without suffering from degradation in<br>
-performance. It also consists of pooling layers reduce the spatial dimensions (width and height) of the input feature maps while preserving important features. This reduction in dimensionality reduces the<br>
+For the application of studying patterns in image data for classification of font Convolutional Neural Networks come to mind. From the study of Tensmeyer et al 2017 [1] and Mohammadian et al 2023 [2] in font
+classification Res-Net architecture seems like the most viable options. ResNet allows for the training of very deep neural networks, even exceeding 100 layers. Deeper networks have the potential to capture more
+complex patterns and hierarchical features in images, leading to better performance in image classification tasks. The Residual connections, which are introduced in ResNet, help to mitigate the vanishing gradient
+problem. By allowing the gradient to bypass some layers, the network can propagate information more effectively during training, enabling the training of deeper networks without suffering from degradation in
+performance. It also consists of pooling layers reduce the spatial dimensions (width and height) of the input feature maps while preserving important features. This reduction in dimensionality reduces the
 computational cost of subsequent layers and helps in controlling overfitting by reducing the model's parameter count.
 
-For this application we data augmentation to prevent overfitting by random rotation, random horizontal flips and Vertical flips. Also in the fully connected layer we add an extra layer dropout so it can generalize<br>
+For this application we data augmentation to prevent overfitting by random rotation, random horizontal flips and Vertical flips. Also in the fully connected layer we add an extra layer dropout so it can generalize
 better even if all features are not there.
 
 We make use of a pretrained resnet for the task as studies show evidence of better performance by using a pretrained model Sharif et al (2014)[3]
 
-The data is augmented we do a random split on the data into 15% test, 15% validation and 70% trainning set, we make use of SGD optimizer as it is computationally efficient and scales well to<br>
+The data is augmented we do a random split on the data into 15% test, 15% validation and 70% trainning set, we make use of SGD optimizer as it is computationally efficient and scales well to
 large datasets commonly encountered in image classification tasks and Cross entropy loss as it work we will classification problems.
 
 We keep track of training accuracy, validation accuracy, training loss and validation loss at every epoch.
